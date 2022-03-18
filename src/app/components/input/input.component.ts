@@ -28,7 +28,8 @@ export class InputComponent implements OnInit {
         title: this.title,
         description: this.description,
         category: this.select,
-        status: Status.Pending
+        status: Status.Pending,
+        date: new Date()
       });
     this.toastr.success(`Item Added to the Category : ${this.select}`);
     this.title = '';

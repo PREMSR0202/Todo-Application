@@ -16,11 +16,12 @@ export class ListItemsComponent implements OnInit {
   category: any = ''
 
   ngOnInit(): void {
-    this.category = this.route.snapshot.paramMap.get('category');
-    this.itemService.getItems();
-    this.itemService.sourceMessage.subscribe((res) => {
-      this.items = res.filter((data) => data.category === this.category);
-      console.log(this.items)
+    this.route.paramMap.subscribe((parms) => {
+      this.category = parms.get('category');
+      this.itemService.getItems();
+      this.itemService.sourceMessage.subscribe((res) => {
+        this.items = res.filter((data) => data.category === this.category);
+      })
     })
   }
 

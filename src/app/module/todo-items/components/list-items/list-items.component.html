@@ -22,7 +22,7 @@
         <div *ngFor="let i of items;index as j">
             <div *ngIf="i.status == 'Completed'">
                 <div [ngStyle]="styleCompleted">
-                    <p id="icon-change">{{i.description }}<i (click)="deleteItems(i.id)"
+                    <p id="icon-change">{{i.title }}<i (click)="deleteItems(i.id)"
                             class="fa-solid fa-trash-can"></i>
                     </p>
                     <p>{{i.description}}</p>

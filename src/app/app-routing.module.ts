@@ -1,3 +1,4 @@
+import { RegistrationComponent } from './components/registration/registration.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 import { InputComponent } from './components/input/input.component';
 import { NgModule } from '@angular/core';
@@ -5,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   { path: '', redirectTo: '/input', pathMatch: 'full' },
+  { path: 'registration', component: RegistrationComponent },
   { path: 'input', component: InputComponent },
   { path: 'input/:id', component: InputComponent },
   {

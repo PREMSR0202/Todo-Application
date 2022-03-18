@@ -1,7 +1,7 @@
 import { ItemModel } from './../../../../interfaces/item-model';
 import { ItemServiceService } from './../../../../services/item-service.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-items',
@@ -10,10 +10,10 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ListItemsComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private itemService: ItemServiceService) { }
+  constructor(private route: ActivatedRoute, private itemService: ItemServiceService, private router: Router) { }
 
   items: ItemModel[] = []
-  category: any = ''
+  category: any = '';
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((parms) => {
@@ -31,6 +31,10 @@ export class ListItemsComponent implements OnInit {
 
   deleteItems(id: any) {
     this.itemService.deleteItems(id);
+  }
+
+  filter(id: any) {
+    this.router.navigate(['/input', id]);
   }
 
   stylePending = {

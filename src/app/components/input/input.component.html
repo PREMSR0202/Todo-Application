@@ -2,15 +2,15 @@
     <div class="card">
         <div>
             <p>Enter Title</p>
-            <input type="text" [(ngModel)]="title" id="title" required="required">
+            <input type="text" [(ngModel)]="temp.title" id="title" required="required">
         </div>
         <div>
             <p>Enter Description</p>
-            <input type="text" [(ngModel)]="description" id="description" required="required">
+            <input type="text" [(ngModel)]="temp.description" id="description" required="required">
         </div>
         <div>
             <p>Select a Category</p>
-            <select id="category" [(ngModel)]="select" required="required">
+            <select id="category" [(ngModel)]="temp.category" required="required">
                 <option *ngFor="let c of category" [ngValue]="c">{{c}}</option>
             </select>
         </div>

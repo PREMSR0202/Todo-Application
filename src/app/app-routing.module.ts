@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   { path: '', redirectTo: '/input', pathMatch: 'full' },
   { path: 'input', component: InputComponent },
+  { path: 'input/:id', component: InputComponent },
   {
     path: 'todoItems', loadChildren: () => import('./module/todo-items/todo-items.module')
       .then(m => m.TodoItemsModule)

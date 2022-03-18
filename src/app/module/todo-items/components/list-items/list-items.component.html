@@ -9,8 +9,10 @@
         <div *ngFor="let i of items">
             <div *ngIf="i.status == 'Pending'">
                 <div [ngStyle]="stylePending">
-                    <p (click)="updateItems(i.id)" id="icon-change">{{i.title}}<i
-                            class="fa-solid fa-clipboard-list"></i></p>
+                    <p id="icon-change">{{i.title}}
+                        <i (click)="updateItems(i.id)" class="fa-solid fa-check"></i>
+                        <i (click)="filter(i.id)" class="fa-solid fa-pen-to-square"></i>
+                    </p>
                     <p>{{i.description}}</p>
                     <p>Created At : {{i.date | date : 'short'}}</p>
                 </div>
@@ -24,6 +26,7 @@
             <div *ngIf="i.status == 'Completed'">
                 <div [ngStyle]="styleCompleted">
                     <p id="icon-change">{{i.title }}<i (click)="deleteItems(i.id)" class="fa-solid fa-trash-can"></i>
+                        <i (click)="filter(i.id)" class="fa-solid fa-pen-to-square"></i>
                     </p>
                     <p>{{i.description}}</p>
                     <p>Created At : {{i.date | date : 'short'}}</p>

@@ -1,10 +1,9 @@
-import { Status } from '../constants/status';
 
 export interface ItemModel {
-    id?: number
+    id?: string
     title: string,
-    category: String,
+    category: string,
     description: string,
-    status: Status,
+    status: string,
     date: Date
 }

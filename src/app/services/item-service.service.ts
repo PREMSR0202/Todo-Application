@@ -2,7 +2,7 @@ import { Status } from './../constants/status';
 import { ItemModel } from '../interfaces/item-model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +12,11 @@ export class ItemServiceService {
   private sourceSubject = new Subject<ItemModel[]>();
   sourceMessage = this.sourceSubject.asObservable();
 
+
   private url = 'https://angular-todo-1fc81-default-rtdb.asia-southeast1.firebasedatabase.app/todos';
 
   listItem: ItemModel[] = [];
+  status: string = Status.Completed;
 
   constructor(private http: HttpClient) { }
 
@@ -39,9 +41,15 @@ export class ItemServiceService {
 
   updateItems(key: any) {
     let temp = {
-      status: Status.Completed
+      status: this.status
     }
     this.http.patch(`${this.url}/${key}.json`, temp).subscribe(res => {
+      this.getItems();
+    })
+  }
+
+  updateTodo(item: ItemModel) {
+    this.http.patch(`${this.url}/${item.id}.json`, item).subscribe(res => {
       this.getItems();
     })
   }

@@ -15,8 +15,11 @@
             </select>
         </div>
         <div>
-            <a type="submit" (click)="addItem()">
+            <a type="submit" *ngIf="!temp.id" (click)="addItem()">
                 Add Item
+            </a>
+            <a type="submit" *ngIf="temp.id" (click)="addItem()">
+                Update Item
             </a>
         </div>
     </div>

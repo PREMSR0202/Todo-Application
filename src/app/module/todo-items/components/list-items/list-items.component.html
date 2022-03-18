@@ -1,0 +1,33 @@
+<div class="back">
+    <a routerLink="/input">Go Back</a>
+    <a href="">Category-In-Display : {{category}}</a>
+</div>
+
+<div class="container">
+    <div>
+        <h2>Pending Task</h2>
+        <div *ngFor="let i of items">
+            <div *ngIf="i.status == 'Pending'">
+                <div [ngStyle]="stylePending">
+                    <p (click)="updateItems(i.id)" id="icon-change">{{i.title}}<i
+                            class="fa-solid fa-clipboard-list"></i></p>
+                    <p>{{i.description}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <h2>Completed Task</h2>
+        <div *ngFor="let i of items;index as j">
+            <div *ngIf="i.status == 'Completed'">
+                <div [ngStyle]="styleCompleted">
+                    <p id="icon-change">{{i.description }}<i (click)="deleteItems(i.id)"
+                            class="fa-solid fa-trash-can"></i>
+                    </p>
+                    <p>{{i.description}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

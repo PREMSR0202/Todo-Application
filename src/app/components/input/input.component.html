@@ -1,0 +1,24 @@
+<app-nav></app-nav>
+<div class="container">
+    <div class="card">
+        <div>
+            <p>Enter Title</p>
+            <input type="text" [(ngModel)]="title" id="title" required="required">
+        </div>
+        <div>
+            <p>Enter Description</p>
+            <input type="text" [(ngModel)]="description" id="description" required="required">
+        </div>
+        <div>
+            <p>Select a Category</p>
+            <select id="category" [(ngModel)]="select" required="required">
+                <option *ngFor="let c of category" [ngValue]="c">{{c}}</option>
+            </select>
+        </div>
+        <div>
+            <a type="submit" (click)="addItem()">
+                Add Item
+            </a>
+        </div>
+    </div>
+</div>

@@ -5,5 +5,6 @@ export interface ItemModel {
     category: string,
     description: string,
     status: string,
-    date: Date
+    date: Date,
+    email: string
 }

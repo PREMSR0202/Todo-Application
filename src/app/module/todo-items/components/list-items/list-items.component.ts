@@ -1,3 +1,4 @@
+import { Auth } from '@angular/fire/auth';
 import { ItemModel } from './../../../../interfaces/item-model';
 import { ItemServiceService } from './../../../../services/item-service.service';
 import { Component, OnInit } from '@angular/core';
@@ -10,7 +11,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ListItemsComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private itemService: ItemServiceService, private router: Router) { }
+  constructor(private route: ActivatedRoute,
+    private itemService: ItemServiceService,
+    private router: Router,
+    private auth: Auth) { }
 
   items: ItemModel[] = []
   category: any = '';
@@ -20,7 +24,8 @@ export class ListItemsComponent implements OnInit {
       this.category = parms.get('category');
       this.itemService.getItems();
       this.itemService.sourceMessage.subscribe((res) => {
-        this.items = res.filter((data) => data.category === this.category);
+        this.items = res.filter((data) => data.category === this.category)
+          .filter((data) => data.email === this.auth['currentUser']?.email);
       })
     })
   }

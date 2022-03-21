@@ -1,3 +1,4 @@
+import { Auth } from '@angular/fire/auth';
 import { ActivatedRoute } from '@angular/router';
 import { ItemModel } from './../../interfaces/item-model';
 import { Status } from './../../constants/status';
@@ -13,7 +14,10 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class InputComponent implements OnInit {
 
-  constructor(private itemService: ItemServiceService, private toastr: ToastrService, private route: ActivatedRoute) { }
+  constructor(private itemService: ItemServiceService,
+    private toastr: ToastrService,
+    private route: ActivatedRoute,
+    private auth: Auth) { }
 
   id: any = ''
   todoItems: ItemModel[] = [];
@@ -27,10 +31,12 @@ export class InputComponent implements OnInit {
     category: '',
     description: '',
     status: this.status,
+    email: this.auth['currentUser']?.email || '',
     date: new Date()
   }
 
   ngOnInit(): void {
+    console.log()
     this.category = Object.values(Category);
     this.route.paramMap.subscribe((params) => {
       this.id = params.get('id');

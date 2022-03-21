@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { AuthenticationService } from './../../services/authentication.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { passwordValidator, passwordMatch, emailValidator } from 'src/app/validators/registration.validator';
@@ -9,7 +11,9 @@ import { passwordValidator, passwordMatch, emailValidator } from 'src/app/valida
 })
 export class RegistrationComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private route: Router,
+    private formBuilder: FormBuilder,
+    private authService: AuthenticationService) { }
 
   users: Object[] = []
 
@@ -36,8 +40,10 @@ export class RegistrationComponent implements OnInit {
   )
 
   onSubmit() {
-    this.users.push(this.registrationForm.value)
-    console.log(this.users)
+    const { email, password } = this.registrationForm.value
+    this.authService.signUp(email, password).subscribe(() => {
+      this.route.navigate(['/login']);
+    })
   }
 
 }

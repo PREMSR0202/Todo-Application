@@ -25,8 +25,12 @@ p {
   box-shadow: 5px 5px 5px 5px lightgrey;
 }
 
-input[type="text"] {
+input[type="text"], select{
   font-size: 20px;
+  border: none;
+  border-bottom: 1px solid black;
+  background: transparent;
+  outline: none;
 }
 
 select {

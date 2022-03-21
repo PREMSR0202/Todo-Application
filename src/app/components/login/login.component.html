@@ -1,5 +1,6 @@
 <div class="container">
     <form (ngSubmit)="submit()">
+        <h2>Login</h2>
         <div>
             <label for="">Email</label>
             <input class="form-control" type="text" name="email" id="" [(ngModel)]="loginForm.email">
@@ -9,10 +10,10 @@
             <input class="form-control" type="password" name="password" id="" [(ngModel)]="loginForm.password">
         </div>
         <div>
-            <button class="btn btn-primary" type="submit">LogIn</button>
+            <button class="btn-primary" type="submit">LogIn</button>
         </div>
         <div>
-            <button (click)="signIN()" class="btn btn-success">Sign UP</button>
+            <button (click)="signIN()" class="btn-success">Sign UP</button>
         </div>
     </form>
 </div>

@@ -16,12 +16,8 @@
             </select>
         </div>
         <div>
-            <a type="submit" *ngIf="!temp.id" (click)="addItem()">
-                Add Item
-            </a>
-            <a type="submit" *ngIf="temp.id" (click)="addItem()">
-                Update Item
-            </a>
+            <button *ngIf="!temp.id" (click)="addItem()" mat-raised-button color="warn">Add Item</button>
+            <button *ngIf="temp.id" (click)="addItem()" mat-raised-button color="warn">Update Item</button>
         </div>
     </div>
 </div>

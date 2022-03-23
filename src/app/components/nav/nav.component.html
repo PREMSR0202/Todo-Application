@@ -1,10 +1,10 @@
 <div class="container">
-    <div>
+    <div class="front">
         <h2>Todo Application</h2>
-        <button (click)="logout()" class="btn btn-danger">Sign Out</button>
+        <button (click)="logout()"  mat-raised-button color="warn">Sign Out</button>
     </div>
-    <a (click)="navigate('Cloud')">Cloud</a>
-    <a (click)="navigate('Javascript')">Javascript</a>
-    <a (click)="navigate('Typescript')">Typescript</a>
-    <a (click)="navigate('Java')">Java</a>
+    <button (click)="navigate('Cloud')" mat-raised-button color="primary">Cloud</button>
+    <button (click)="navigate('Javascript')" mat-raised-button color="primary">Javascript</button>
+    <button (click)="navigate('Typescript')" mat-raised-button color="primary">Typescript</button>
+    <button (click)="navigate('Java')" mat-raised-button color="primary">Java</button>
 </div>
